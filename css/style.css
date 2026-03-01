@@ -320,7 +320,7 @@ h6 {
     margin-top: var(--nav-height);
 }
 
-.hero__media {
+.hero__image-contain {
     position: absolute;
     top: 0;
     left: 0;
@@ -328,15 +328,10 @@ h6 {
     height: 100%;
 }
 
-.hero__video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
+.hero__image {
+    width: 100%;
+    height: 100%;
+    object-position: center;
     object-fit: cover;
 }
 
@@ -546,6 +541,190 @@ h6 {
     font-size: 0.82rem;
     color: var(--color-text-muted);
     line-height: 1.65;
+}
+
+/* ============================================================
+   STRATEGIC TIMELINE
+   ============================================================ */
+.timeline {
+    padding: var(--space-3xl) 0;
+    background-color: var(--color-bg);
+}
+
+.timeline__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+.timeline__header {
+    margin-bottom: var(--space-2xl);
+    text-align: center;
+}
+
+.timeline__title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+    color: var(--color-text);
+}
+
+.timeline__subtitle {
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+.timeline__grid {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.timeline__line {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--color-border-light);
+    z-index: 1;
+}
+
+.timeline__item {
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: var(--space-2xl);
+    z-index: 2;
+}
+
+.timeline__item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline__marker {
+    position: absolute;
+    left: 11px;
+    top: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--color-bg);
+    border: 3px solid var(--color-accent);
+    z-index: 3;
+    transition: transform var(--transition-fast);
+}
+
+.timeline__item:hover .timeline__marker {
+    transform: scale(1.2);
+}
+
+.timeline__year {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: var(--space-xs);
+    line-height: 1;
+}
+
+.timeline__content-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--space-sm);
+}
+
+.timeline__desc {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--space-sm);
+    line-height: 1.7;
+}
+
+.timeline__bullets {
+    margin-bottom: var(--space-md);
+}
+
+.timeline__bullets li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    margin-bottom: 6px;
+}
+
+.timeline__bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+}
+
+.timeline__footer {
+    background-color: var(--color-bg-subtle);
+    padding: var(--space-sm) var(--space-md);
+    border-left: 3px solid var(--color-accent);
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--color-text-muted);
+    border-radius: 0 4px 4px 0;
+}
+
+/* Timeline Desktop Overrides */
+@media (min-width: 768px) {
+    .timeline__line {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .timeline__item {
+        padding-left: 0;
+        width: 50%;
+    }
+
+    .timeline__marker {
+        left: auto;
+        right: -10px;
+    }
+
+    /* Left Side Items */
+    .timeline__item:nth-child(odd) {
+        padding-right: 50px;
+        text-align: right;
+    }
+
+    .timeline__item:nth-child(odd) .timeline__bullets li {
+        padding-left: 0;
+        padding-right: 20px;
+    }
+
+    .timeline__item:nth-child(odd) .timeline__bullets li::before {
+        left: auto;
+        right: 0;
+    }
+
+    .timeline__item:nth-child(odd) .timeline__footer {
+        border-left: none;
+        border-right: 3px solid var(--color-accent);
+        border-radius: 4px 0 0 4px;
+    }
+
+    /* Right Side Items */
+    .timeline__item:nth-child(even) {
+        margin-left: 50%;
+        padding-left: 50px;
+    }
+
+    .timeline__item:nth-child(even) .timeline__marker {
+        right: auto;
+        left: -10px;
+    }
 }
 
 
